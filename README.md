@@ -40,4 +40,68 @@ dados poderiam ser preenchidos replicando o score ao longo da semana até a pró
   
   Todos estes métodos foram aplicados aos datasets test, valid e train, ao dataset de solo foi aplicado apenas a redução de entradas por estado e a padronização.
     
+## Análise e Exploração dos Dados:
+
+A primeira análise realizada foi quanto a distribuição dos scores em cada dataset, é importante observar se cada dataset tem uma distribuição semelhante, pois caso o dataset de treino tenha uma distribuição muito diferente dos datasets de validação ou treino, nosso modelo não terá um bom desempenho.
+
+
+![treino_dataset](https://github.com/user-attachments/assets/9856e8e6-20d1-4721-b397-e84d85f2d288)
+![teste_dataset](https://github.com/user-attachments/assets/cfc36683-93bc-4184-962c-fe03c172abdd)
+![valid_dataset](https://github.com/user-attachments/assets/0588ce87-8c18-4fae-8e2f-775bee0036b8)
+
+Os datasets possuem distribuição assimétrica a direita. Também é possível notar que as classes são desbalanceadas, com mais da metade tendo score 0.
+
+Também foi realizada a análise da distribuição de score para cada uma das variáveis principais -não levando em consideração as variáveis de max, min e amplitude. A análise nos mostra que com exceção dos extremos condição normal (0) e seca extrema (5) as distribuições das demais classificações são muito semelhantes.
+
+O boxplot de chuva (PRECTOT) é interessante pois quase todos os dias do dataset não chove ou chove muito pouco, os dias que chovem uma quantidade relevante são outliers. Outro ponto interessante é como a média e quartis da umidade específica do ar (QV2M) para seca extrema aparenta ser muito próxima da classificação de clima normal e maior que todas as outras classificações, porém um teste de hipótese com nível de confiança de 95% mostra o contrário, a única distribuição estatisticamente não semelhante à classificação seca é a classificação normal.
+
+Também é possível observar que temperaturas altas estão associadas com seca extrema, fato corroborado por teste de hipótese com nível de confiança de 95%, essa é uma informação promissora pois indica que estas variáveis podem ser capazes de ajudar modelos a classificarem corretamente o nível de seca. 
+
+![box_plots](https://github.com/user-attachments/assets/ce66c17c-f9f5-4146-a842-7a4081c84c81)
+
+
+Analisando os pairplots  das demais variáveis para cada estado é possível notar que cada região possui distribuições e correlações diferentes. Por exemplo a distribuição dos valore de pressão (PS) nos estados de Illinois e Iowa são bem próximas de uma distribuição normal, já colorado não tem uma distribuição normal; ou como a temperatura de bulbo úmido (T2MWET) em Illinois lembra mais uma distribuição uniforme, a de colorado uma distribuição assimétrica à direita e Iowa uma distribuição multimodal. Essa diferença das distribuições entre as regiões pode dificultar a criação de um modelo capaz de generalizar todos os estados.
+
+Apesar das correlações entres as features variarem de estado para estado algumas são constantes entre os estados. Velocidade alta de vento estão correlacionadas a pouca chuva, baixas temperatura de bulbo úmido são correlacionadas a pouca chuva (isto é esperado pois quanto mais seco está o ar menor é a temperatura de bulbo úmido).
+
+A alta correlação entre variáveis semelhantes como vento a 10 e 50 metros ou as diferentes temperaturas era esperado. A curva formada entre a umidade e as demais temperaturas seguem os padrões de equações físico-químicas conhecidas.
+![colorado](https://github.com/user-attachments/assets/04b060fd-c6d0-4612-a5fe-b0620383c0b0)
+![illinois](https://github.com/user-attachments/assets/8f75abce-1f57-4b72-a753-f7799f315f7f)
+![iowa](https://github.com/user-attachments/assets/17ee820b-a3d0-4ff3-82b6-b3e3fedd2e0b)
+
+
+Também foi realizada a análise do dataset de solo com relação ao score de nível de secas através de stripplots. Essa análise trouxe algumas observações interessantes.
+
+Áreas urbanas raramente passam por secas severas, isso provavelmente se dá pelo fato de cidades serem geralmente formadas onde os recursos hídricos são abundantes o suficiente para sustentar a população. Regiões de cultivo regadas por chuva possuem mais observações de seca intensa que regiões de cultivo irrigado, porém também possuem mais observações com situação normal. 
+
+Outros aspectos interessantes é que regiões com inclinação majoritariamente do tipo 1 não são afetadas por secas severas - essas regiões, no entanto, são limitadas a dois condados no estado de Illinois - e que as regiões afetadas por secas severas estão mais concentradas entre as latitudes -105º e -95º.
+
+![Stripplot da fração de terra urbana para cada classificação de seca](https://github.com/user-attachments/assets/e034fa5e-f899-4237-b7cb-5b2c8a432507)
+![Stripplot da fração de área cultivada irrigada por chuva para cada classificação de seca](https://github.com/user-attachments/assets/e665eead-e747-4bd5-9d7a-1b92419176f9)
+![Stripplot da fração de área cultivada irrigada por sistema de irrigação para cada classificação de seca](https://github.com/user-attachments/assets/ef46b837-57fa-4fb3-a22e-2d43c3175bd6)
+![Stripplot da fração de área com inclinação do tipo 1 para cada classificação de seca](https://github.com/user-attachments/assets/85caefea-c136-4f7b-b91b-78728029a724)
+![Stripplot da longitude de cada região para cada classificação de seca](https://github.com/user-attachments/assets/c80a5313-4b49-4ffb-8e58-b3f71c09e6ae)
+
+Outro ponto avaliado foi a independência das séries temporais de cada condados (fips), massas de ar frio, quente, úmidas ou secas se deslocam alterando o clima a medida que se movem, Foi realizado um teste causalidade de Granger para verificar se o estado de um condado no tempo x pode ter efeito no estado de outro condado num tempo x + lag. Realizando o teste de Granger, com nível de confiança de 95% e entre um condado do Nebraska com um do Colorado dois de Iowa (estados vizinhos) e outro com Texas(estado não vizinho) - em tese não de javer depednência das séries temproais entre regiões muito distantes -  para um lag de 6 obtivemos que para:
+
+fips: 31147 (Nebraska) e 8053(Colorado) o teste foi positivo para lags de 1 a 6
+fips: 31147 e 19035 (Iowa) o teste foi positivo para lags de 3 a 6
+fips: 31147 e 31181 (Nebraska) o teste foi positivo para lags de 1 a 6
+fips: 31147 e 48089 (Texas) o teste foi negativo para todos os lags
+fips: 31147 e 19113 (Iowa) o teste foi positivo para lags de 3 a 6
+
+O teste de causalidade de Granger indica que há dependência entre alguns pares de séries temporais, porém ele não elimina a possibilidade do acaso. No entanto estes resultado associados aos fenômenos metereológicos conhecidos pode-se concluir que a uma causalidade entre as séries temporais.
+
+Os código utilizados para transformar os dados e gerar as visualizações pode ser encontrado nos seguintes links
+
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Reducao_dataset.ipynb
+
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Processamento_e_visualizacao.ipynb
+
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Testes.ipynb
+
+
+
+
+
 
