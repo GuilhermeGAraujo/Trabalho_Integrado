@@ -1,5 +1,5 @@
 # Trabalho_Integrado
-  Respositório para o trabalho apresentado em 19/04/23 para conclusão da Pós-Graduação em Ciência de Dados e Big Data pela PUC-Minas
+ 
 
 # FORECASTING DE SECAS UTILIZANDO REDES NEURAIS CNN-LSTM
 
