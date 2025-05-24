@@ -149,7 +149,11 @@ Uma solução para este problema poderia ser utilizar dados de mais estados adic
 Os notebooks com os códigos utilizado para otrabalho podem ser acessados nos links abaixo
 
 https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Reducao_dataset.ipynb
+
 https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Processamento_e_visualizacao.ipynb
+
 https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Testes.ipynb
+
 https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/shape_data.ipynb
-https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/modelagem.ipynb.
+
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/modelagem.ipynb
