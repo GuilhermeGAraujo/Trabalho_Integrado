@@ -45,9 +45,9 @@ dados poderiam ser preenchidos replicando o score ao longo da semana até a pró
 A primeira análise realizada foi quanto a distribuição dos scores em cada dataset, é importante observar se cada dataset tem uma distribuição semelhante, pois caso o dataset de treino tenha uma distribuição muito diferente dos datasets de validação ou treino, nosso modelo não terá um bom desempenho.
 
 
-![treino_dataset](https://github.com/user-attachments/assets/9856e8e6-20d1-4721-b397-e84d85f2d288)
-![teste_dataset](https://github.com/user-attachments/assets/cfc36683-93bc-4184-962c-fe03c172abdd)
-![valid_dataset](https://github.com/user-attachments/assets/0588ce87-8c18-4fae-8e2f-775bee0036b8)
+![treino_dataset](https://github.com/user-attachments/assets/9856e8e6-20d1-4721-b397-e84d85f2d288 " distribuição dataset de treino")
+![teste_dataset](https://github.com/user-attachments/assets/cfc36683-93bc-4184-962c-fe03c172abdd "distribuição dataset de teste")
+![valid_dataset](https://github.com/user-attachments/assets/0588ce87-8c18-4fae-8e2f-775bee0036b8 "distribuição dataset de validação")
 
 Os datasets possuem distribuição assimétrica a direita. Também é possível notar que as classes são desbalanceadas, com mais da metade tendo score 0.
 
@@ -57,7 +57,7 @@ O boxplot de chuva (PRECTOT) é interessante pois quase todos os dias do dataset
 
 Também é possível observar que temperaturas altas estão associadas com seca extrema, fato corroborado por teste de hipótese com nível de confiança de 95%, essa é uma informação promissora pois indica que estas variáveis podem ser capazes de ajudar modelos a classificarem corretamente o nível de seca. 
 
-![box_plots](https://github.com/user-attachments/assets/ce66c17c-f9f5-4146-a842-7a4081c84c81)
+![box_plots](https://github.com/user-attachments/assets/ce66c17c-f9f5-4146-a842-7a4081c84c81 "Box plots")
 
 
 Analisando os pairplots  das demais variáveis para cada estado é possível notar que cada região possui distribuições e correlações diferentes. Por exemplo a distribuição dos valore de pressão (PS) nos estados de Illinois e Iowa são bem próximas de uma distribuição normal, já colorado não tem uma distribuição normal; ou como a temperatura de bulbo úmido (T2MWET) em Illinois lembra mais uma distribuição uniforme, a de colorado uma distribuição assimétrica à direita e Iowa uma distribuição multimodal. Essa diferença das distribuições entre as regiões pode dificultar a criação de um modelo capaz de generalizar todos os estados.
@@ -65,9 +65,9 @@ Analisando os pairplots  das demais variáveis para cada estado é possível not
 Apesar das correlações entres as features variarem de estado para estado algumas são constantes entre os estados. Velocidade alta de vento estão correlacionadas a pouca chuva, baixas temperatura de bulbo úmido são correlacionadas a pouca chuva (isto é esperado pois quanto mais seco está o ar menor é a temperatura de bulbo úmido).
 
 A alta correlação entre variáveis semelhantes como vento a 10 e 50 metros ou as diferentes temperaturas era esperado. A curva formada entre a umidade e as demais temperaturas seguem os padrões de equações físico-químicas conhecidas.
-![colorado](https://github.com/user-attachments/assets/04b060fd-c6d0-4612-a5fe-b0620383c0b0)
-![illinois](https://github.com/user-attachments/assets/8f75abce-1f57-4b72-a753-f7799f315f7f)
-![iowa](https://github.com/user-attachments/assets/17ee820b-a3d0-4ff3-82b6-b3e3fedd2e0b)
+![colorado](https://github.com/user-attachments/assets/04b060fd-c6d0-4612-a5fe-b0620383c0b0 "Pairplot de Colorado")
+![illinois](https://github.com/user-attachments/assets/8f75abce-1f57-4b72-a753-f7799f315f7f "Pairplot de Illinois")
+![iowa](https://github.com/user-attachments/assets/17ee820b-a3d0-4ff3-82b6-b3e3fedd2e0b "Pairplot de Iowa")
 
 
 Também foi realizada a análise do dataset de solo com relação ao score de nível de secas através de stripplots. Essa análise trouxe algumas observações interessantes.
@@ -76,11 +76,11 @@ Também foi realizada a análise do dataset de solo com relação ao score de n�
 
 Outros aspectos interessantes é que regiões com inclinação majoritariamente do tipo 1 não são afetadas por secas severas - essas regiões, no entanto, são limitadas a dois condados no estado de Illinois - e que as regiões afetadas por secas severas estão mais concentradas entre as latitudes -105º e -95º.
 
-![Stripplot da fração de terra urbana para cada classificação de seca](https://github.com/user-attachments/assets/e034fa5e-f899-4237-b7cb-5b2c8a432507)
-![Stripplot da fração de área cultivada irrigada por chuva para cada classificação de seca](https://github.com/user-attachments/assets/e665eead-e747-4bd5-9d7a-1b92419176f9)
-![Stripplot da fração de área cultivada irrigada por sistema de irrigação para cada classificação de seca](https://github.com/user-attachments/assets/ef46b837-57fa-4fb3-a22e-2d43c3175bd6)
-![Stripplot da fração de área com inclinação do tipo 1 para cada classificação de seca](https://github.com/user-attachments/assets/85caefea-c136-4f7b-b91b-78728029a724)
-![Stripplot da longitude de cada região para cada classificação de seca](https://github.com/user-attachments/assets/c80a5313-4b49-4ffb-8e58-b3f71c09e6ae)
+![Stripplot da fração de terra urbana para cada classificação de seca](https://github.com/user-attachments/assets/e034fa5e-f899-4237-b7cb-5b2c8a432507 "Stripplot da fração de terra urbana para cada classificação de seca")
+![Stripplot da fração de área cultivada irrigada por chuva para cada classificação de seca](https://github.com/user-attachments/assets/e665eead-e747-4bd5-9d7a-1b92419176f9 "Stripplot da fração de área cultivada irrigada por chuva para cada classificação de seca")
+![Stripplot da fração de área cultivada irrigada por sistema de irrigação para cada classificação de seca](https://github.com/user-attachments/assets/ef46b837-57fa-4fb3-a22e-2d43c3175bd6 "Stripplot da fração de área cultivada irrigada por sistema de irrigação para cada classificação de seca")
+![Stripplot da fração de área com inclinação do tipo 1 para cada classificação de seca](https://github.com/user-attachments/assets/85caefea-c136-4f7b-b91b-78728029a724 "Stripplot da fração de área com inclinação do tipo 1 para cada classificação de seca")
+![Stripplot da longitude de cada região para cada classificação de seca](https://github.com/user-attachments/assets/c80a5313-4b49-4ffb-8e58-b3f71c09e6ae "Stripplot da longitude de cada região para cada classificação de seca")
 
 Outro ponto avaliado foi a independência das séries temporais de cada condados (fips), massas de ar frio, quente, úmidas ou secas se deslocam alterando o clima a medida que se movem, Foi realizado um teste causalidade de Granger para verificar se o estado de um condado no tempo x pode ter efeito no estado de outro condado num tempo x + lag. Realizando o teste de Granger, com nível de confiança de 95% e entre um condado do Nebraska com um do Colorado dois de Iowa (estados vizinhos) e outro com Texas(estado não vizinho) - em tese não de javer depednência das séries temproais entre regiões muito distantes -  para um lag de 6 obtivemos que para:
 
@@ -92,16 +92,55 @@ fips: 31147 e 19113 (Iowa) o teste foi positivo para lags de 3 a 6
 
 O teste de causalidade de Granger indica que há dependência entre alguns pares de séries temporais, porém ele não elimina a possibilidade do acaso. No entanto estes resultado associados aos fenômenos metereológicos conhecidos pode-se concluir que a uma causalidade entre as séries temporais.
 
-Os código utilizados para transformar os dados e gerar as visualizações pode ser encontrado nos seguintes links
+## Criação do modelo de Machine Learning
 
-https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Reducao_dataset.ipynb
+Um modelo de redes neurais muito utilizado para trabalhar com sequências sejam textos ou timeseries é a modelo de rede  LSTM (Long short-term memory), uma estrutura de rede neural artificial recorrente com conexões de feedback. Porém como os dados são compostos de múltiplas séries multivariadas correlacionadas apenas a LSTM não seria capaz de ver e interpretar essa relação entre séries. Por isso será utilizado redes convolucionais (CNNs) juntamente com a LSTM.
 
-https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Processamento_e_visualizacao.ipynb
+A abordagem de CNN-LSTM para predição de séries temporais já é amplamente abordada com a inspiração para este trabalho vindo do artigo Multivariate CNN-LSTM Model for Multiple Parallel Financial Time-Series Prediction de autoria de  Harya Widiputra, Adele Mailangkay , e Elliana Gautam.
 
-https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Testes.ipynb
+Devido a dificuldades do terinamento e manipulação dos dados do modelo em um computador pessoal, a base foi novamente reduzida, limitando apenas para o estado do Colorado.
+
+As redes neurais serão construídas utilizando keras via tensorflow.
+
+O primeiro modelo foi construído utilizando 2 camadas CNNs com a primeira com 16 filtros e a segunda com 32, ambas com kernel de tamanho 3 e função de ativação relu e MaxPolling de tamanho 2 após cada camada. Devido à dimensão tempo da série temporária todas as camadas com exceção da LSTM serão envolvidas por camadas TimeDistributed.
+
+Após o segundo MaxPooling o output é passado por um Dropout com razão de dropout de 0,2 e por uma camada Flatten preparando o dado para ser imputado na camada LSTM.
+A camada LSTM é composta de 64 unidades com um dropout recorrente de 0,5. O output da LSTM passa por um reshape preparando para uma última camada convolucional, dessa vez com 6 filtros (o número de classes do nosso problema) com kernel de tamanho e função de ativação softmax. A função desta última camada é retornar as probabilidades das classes.
+No total o modelo tem 154,012 parâmetros para treinar.
+
+O treinamento foi realizado utilizando cross-entropia categórica, otimizador adam com taxa de aprendizagem de 0,001 e acurácia como métrica com 100 épocas. Devido ao fato de o dataset de validação possuir 104 time steps e o de treino ter 887 e a necessidade do batchsize para treinamento e validação serem os mesmos o modelo foi treinado múltiplas vezes sobre intervalos de tempo diferentes com 104 time steps
+
+![image](https://github.com/user-attachments/assets/6a1e82e9-b9bc-4fd1-9af8-bb7e84cdf976 "Modelo 1")
+
+O treinamento foi realizado utilizando cross-entropia categórica, otimizador adam com taxa de aprendizagem de 0,001 e acurácia como métrica com 100 épocas.
+
+Devido ao fato de o dataset de validação possuir 104 time steps e o de treino ter 887 e a necessidade do batchsize para treinamento e validação serem os mesmos o modelo foi treinado múltiplas vezes sobre intervalos de tempo diferentes com 104 time steps
+
+Este modelo teve uma acurácia de treino de 69% e 39% de acurácia de validação.
+
+Com intuito de melhorar o desempenho do modelo e aproximar a acurácia de validação do treino foi alterado tamanho do kernel da primeira camada convolucional, tamanho da poll na primeira  MaxPolling , e razões de dropout após a CNN e após a LSTM
+
+![image](https://github.com/user-attachments/assets/5ead334d-736d-464d-bdb8-39ad66939fd4 "Modelo 2")
+
+Este segundo modelo teve o mesmo desempenho do primeiro.
+
+Foi feito tentativas entre vários outros modelos, alterando a taxa de aprendizagem do otimizadores, acrescentando mais camadas CNN e LSTM, alterando o polling de max para média, aumentando o número de épocas do treinamento de 100 para 1000, mas nenhum dos modelos teve um desempenho superior a 69% para o treino e 39% para a validação.
+
+O último modelo treinado e utilizado para o teste é o modelo abaixo.
+
+![image](https://github.com/user-attachments/assets/6f02594b-208c-415c-9b65-e797ee54c5fa "Modelo final")
+
+O desempenho no modelo do teste não foi bom, além da baixa acurácia os pontos que mostram a baixa qualidade do modelo para representação do problema estão nos recalls das classes. O modelo teve um recall de 100% para classe 0 (condição climática normal) e zero para as demais. Ou seja, o modelo está classificando tudo como sendo condição normal.
+
+![image](https://github.com/user-attachments/assets/00acd4f8-93db-4e32-90ba-34352f558cde "Scores do modelo")
 
 
+# Conclusão
 
+ A análise exploratória mostrou que há pouca diferença entre a condição de seca e os dados meteorológicos e geográficos, isso pode ser uma das razões para o baixo desempenho do modelo em predizer a condição climática. Esta semelhança somada ao imbalanço do dataset quanto às classes dificulta a construção de um modelo que realmente busca identificar as classes e não maximizar sua acurácia enviesando sua classificação para a classe mais comum.
 
+Um insight importante da análise que impactou a escolha do modelo foi a correlação entre as séries temporais de regiões diferentes, esse insight mostrou necessário a escolha de um modelo capaz de identificar essas relações por isso a escolha de camadas CNN antes da LSTM.
+
+Uma solução para este problema poderia ser utilizar dados de mais estados adicionando mais informações ao modelo assim como a utilização do dataset de solo, como observado na exploração algumas das variáveis aparentam ter comportamento correlacionado à intensidade da seca
 
 
