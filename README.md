@@ -144,3 +144,12 @@ Um insight importante da análise que impactou a escolha do modelo foi a correla
 Uma solução para este problema poderia ser utilizar dados de mais estados adicionando mais informações ao modelo assim como a utilização do dataset de solo, como observado na exploração algumas das variáveis aparentam ter comportamento correlacionado à intensidade da seca
 
 
+## Notebooks
+
+Os notebooks com os códigos utilizado para otrabalho podem ser acessados nos links abaixo
+
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Reducao_dataset.ipynb
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Processamento_e_visualizacao.ipynb
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/Testes.ipynb
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/shape_data.ipynb
+https://github.com/GuilhermeGAraujo/Trabalho_Integrado/blob/master/modelagem.ipynb.
